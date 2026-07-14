@@ -1,0 +1,112 @@
+QMainWindow {
+    background-color: #0B1533;
+}
+#centralWidget {
+    background-color: #000000;
+}
+QLabel {
+    color: white;
+    font-size: 18px;
+}
+
+/* -----------------------------
+   Header(ヘッダ画像)
+------------------------------ */
+
+#titleLabel {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+/* -----------------------------
+   Panels(左、中央、右画面)
+------------------------------ */
+
+#leftPanel,
+#centerPanel,
+#rightPanel {
+    background-color: #132347;
+    border: 2px solid #C9A227;
+    border-radius: 12px;
+}
+
+#panelTitle {
+    font-family: "HGS明朝B";
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* -----------------------------
+   prize card(賞品カード)
+------------------------------ */
+
+#prizeCard {
+    background-color: #1A2B52;
+    border: 2px solid #C9A227;
+    border-radius: 10px;
+}
+
+#rankLabel {
+    border: none;
+    background: transparent;
+    font-family: "HGS明朝B";
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#prizeLabel {
+    border: none;
+    background: transparent;
+    font-size: 12px;
+}
+
+#remainLabel {
+    border: none;
+    background: transparent;
+    font-family: "HGS明朝B";
+    color: #FFD966;
+    font-size: 16px;
+}
+
+#statusLabel {
+    border: none;
+    background: transparent;
+    font-family: "HGS明朝B";
+    color: #FFD966;
+    font-size: 12px;
+}
+
+/* -----------------------------
+   ParticipantCount（参加人数）
+------------------------------ */
+#participantCount {
+    background-color: #1A2B52;
+    border: 2px solid #C9A227;
+    border-radius: 10px;
+}
+
+#participantTitle {
+    border: none;
+    background: transparent;
+    font-family: "HGS明朝B";
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+#participantNumber {
+    border: none;
+    background: transparent;
+    font-family: "HGS明朝B";
+    font-size: 22px;
+    font-weight: bold;
+    color: #FFD966;
+}
+
+#participantUnit {
+    border: none;
+    background: transparent;
+    font-family: "HGS明朝B";
+    font-size: 18px;
+    color: white;
+}
