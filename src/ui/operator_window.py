@@ -1,9 +1,11 @@
 from pathlib import Path
+from datetime import datetime
 
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QPixmap
 from PySide6.QtWidgets import (
     QLabel,
+    QPushButton,
     QFrame,
     QHBoxLayout,
     QMainWindow,
@@ -16,6 +18,18 @@ from ui.widgets.prize_card import PrizeCard
 
 # 参加人数Widget
 from ui.widgets.participant_count import ParticipantCount
+
+# 現在抽選中の賞品表示Widget
+from ui.widgets.current_prize import CurrentPrize
+
+# 当選者表示Widget
+from ui.widgets.winner_display import WinnerDisplay
+
+# ルーレットWidget
+from ui.widgets.roulette import Roulette
+from ui.widgets.history_list import HistoryList
+from logic.lottery import Lottery
+from logic.participants import Participant, load_participants
 
 # ==========================================================
 # オペレーター画面（メイン画面）
@@ -62,7 +76,7 @@ class OperatorWindow(QMainWindow):
         TITLE_HEIGHT = 165
 
         # 左上座標
-        TITLE_X = 20
+        TITLE_X = 40
         TITLE_Y = 0
 
         # パネルと重ねる高さ
@@ -115,6 +129,11 @@ class OperatorWindow(QMainWindow):
         # ------------------------------------------
         self.participant_count = ParticipantCount(central)
 
+        self.participants = self._load_initial_participants()
+        self.lottery = Lottery(self.participants)
+        self.pending_history_entry = None
+        self.participant_count.update_count(len(self.participants))
+
         # サイズは後でQSSに合わせて調整
         self.participant_count.resize(180, 110)
 
@@ -149,8 +168,10 @@ class OperatorWindow(QMainWindow):
 
         left_layout.addWidget(left_title)
 
-        # 賞品カード（現在はサンプル1枚）
-        left_layout.addWidget(PrizeCard())
+        # 賞品カード（現在はサンプル1枚・上揃え）
+        self.prize_card = PrizeCard()
+        left_layout.addWidget(self.prize_card, alignment=Qt.AlignTop)
+        left_layout.addStretch()
 
         self.left_panel.setLayout(left_layout)
 
@@ -164,15 +185,32 @@ class OperatorWindow(QMainWindow):
         center_layout2.setContentsMargins(15, 15, 15, 15)
         center_layout2.setSpacing(15)
 
-        # パネルタイトル
-        center_title = QLabel("現在の賞品")
-        center_title.setObjectName("panelTitle")
-        center_title.setAlignment(Qt.AlignHCenter | Qt.AlignTop)
+        # 現在抽選中の賞品（中央パネル最上部）
+        self.current_prize = CurrentPrize()
+        center_layout2.addWidget(self.current_prize)
 
-        center_layout2.addWidget(center_title)
+        # 当選者表示（ルーレット停止後に当選者名へ更新）
+        self.winner_display = WinnerDisplay()
+        center_layout2.addWidget(self.winner_display)
 
-        center_layout2.addWidget(QLabel("当選者表示"))
-        center_layout2.addWidget(QLabel("ルーレット"))
+        # ルーレット
+        self.roulette = Roulette(
+            [participant.to_dict() for participant in self.lottery.available_participants]
+        )
+        center_layout2.addWidget(self.roulette)
+
+        # 抽選操作ボタン
+        self.draw_button = QPushButton("🎉 抽選スタート")
+        self.draw_button.setObjectName("drawButton")
+        self.draw_button.setFixedWidth(250)
+        self.draw_button.clicked.connect(self.toggle_draw)
+        center_layout2.addWidget(self.draw_button, alignment=Qt.AlignHCenter)
+
+        self.next_prize_button = QPushButton("次の賞品へ")
+        self.next_prize_button.setObjectName("nextPrizeButton")
+        self.next_prize_button.setFixedWidth(200)
+        self.next_prize_button.clicked.connect(self.prepare_next_prize)
+        center_layout2.addWidget(self.next_prize_button, alignment=Qt.AlignHCenter)
 
         center.setLayout(center_layout2)
 
@@ -197,8 +235,8 @@ class OperatorWindow(QMainWindow):
 
         right_layout.addWidget(right_title)
 
-        # 今後ここへ当選履歴カードを追加
-        right_layout.addStretch()
+        self.history_list = HistoryList()
+        right_layout.addWidget(self.history_list, 1)
 
         right.setLayout(right_layout)
 
@@ -229,4 +267,60 @@ class OperatorWindow(QMainWindow):
             - margin,
             20,
         )
+
+    def toggle_draw(self):
+        """抽選開始／停止ボタンの状態を切り替える。"""
+        if self.roulette.is_spinning:
+            selected_participant = self.roulette.stop()
+            winner = self.lottery.confirm_winner(selected_participant["id"])
+            self.winner_display.show_winner(winner.name, winner.department)
+            self.pending_history_entry = (
+                self.current_prize.rank_label.text(),
+                self.current_prize.prize_name_label.text(),
+                winner.name,
+                datetime.now(),
+            )
+            self.draw_button.setText("🎉 抽選スタート")
+            self.draw_button.setEnabled(False)
+            self.next_prize_button.setEnabled(True)
+            return
+
+        self.roulette.start()
+        self.winner_display.set_drawing()
+        self.draw_button.setText("🎉 ストップ")
+        self.next_prize_button.setEnabled(False)
+
+    def prepare_next_prize(self):
+        """次の賞品データの読み込み前に、抽選画面を初期状態へ戻す。"""
+        if self.pending_history_entry:
+            self.history_list.add_entry(*self.pending_history_entry)
+            self.pending_history_entry = None
+
+        self.winner_display.reset()
+        if self.lottery.has_available_participant:
+            self.roulette.set_participants(
+                [
+                    participant.to_dict()
+                    for participant in self.lottery.available_participants
+                ]
+            )
+            self.draw_button.setEnabled(True)
+            return
+
+        self.draw_button.setEnabled(False)
+        self.next_prize_button.setEnabled(False)
+        self.winner_display.status_label.setText("全員当選しました")
+
+    @staticmethod
+    def _load_initial_participants() -> list[Participant]:
+        """participants.csv があれば読み込み、なければ画面確認用の候補を使う。"""
+        project_root = Path(__file__).resolve().parents[2]
+        csv_path = project_root / "data" / "participants.csv"
+        if csv_path.exists():
+            return load_participants(csv_path)
+
+        return [
+            Participant(item["id"], item["name"], item["department"])
+            for item in Roulette._SAMPLE_PARTICIPANTS
+        ]
         

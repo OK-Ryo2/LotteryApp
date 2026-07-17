@@ -42,7 +42,11 @@ class PrizeCard(QFrame):
         wing_pixmap = QPixmap(
             str(project_root / "assets" / "images" / "ui" / "wing.png")
         )
-        wing_label.setPixmap(wing_pixmap)
+        wing_label.setPixmap(
+            wing_pixmap.scaledToWidth(
+                max(1, wing_pixmap.width() // 2), Qt.SmoothTransformation
+            )
+        )
         wing_label.setAlignment(Qt.AlignCenter | Qt.AlignTop)
 
         rank_label = QLabel("20等")
@@ -56,30 +60,7 @@ class PrizeCard(QFrame):
         rank_label.raise_()
 
         # ==========================================
-        # 中央左：商品画像エリア
-        # ==========================================
-        image_layout = QVBoxLayout()
-        image_layout.setAlignment(Qt.AlignCenter)
-
-        image_label = QLabel()
-
-        prize_pixmap = QPixmap(
-            str(
-                project_root
-                / "assets"
-                / "images"
-                / "prizes"
-                / "amazongift.png"
-            )
-        )
-
-        image_label.setPixmap(prize_pixmap)
-        image_label.setAlignment(Qt.AlignCenter)
-
-        image_layout.addWidget(image_label)
-
-        # ==========================================
-        # 中央右：賞品情報エリア
+        # 右：賞品情報エリア
         # ==========================================
         info_layout = QVBoxLayout()
         info_layout.setAlignment(Qt.AlignVCenter)
@@ -111,6 +92,5 @@ class PrizeCard(QFrame):
         # 各エリアを配置
         # ==========================================
         main_layout.addLayout(rank_layout)
-        main_layout.addLayout(image_layout)
         main_layout.addLayout(info_layout, 1)
         main_layout.addLayout(status_layout)

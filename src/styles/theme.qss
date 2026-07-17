@@ -77,6 +77,222 @@ QLabel {
 }
 
 /* -----------------------------
+   CurrentPrize（現在抽選中の賞品）
+------------------------------ */
+#currentPrize {
+    background-color: #1A2B52;
+    border: 2px solid #FFD966;
+    border-radius: 12px;
+}
+
+#currentPrizeWing,
+#currentPrizeTitle,
+#currentPrizeRank,
+#currentPrizeName,
+#currentPrizeRemain {
+    border: none;
+    background: transparent;
+}
+
+#currentPrizeTitle {
+    font-family: "HGS明朝B";
+    font-size: 22px;
+    font-weight: bold;
+    color: #1A2B52;
+    background-color: #FFD966;
+    border: 1px solid #C9A227;
+    border-radius: 5px;
+    padding: 0 10px;
+}
+
+#currentPrizeRank {
+    font-family: "HGS明朝B";
+    font-size: 20px;
+    font-weight: bold;
+    color: #FFD966;
+}
+
+#currentPrizeName {
+    font-family: "HGS明朝B";
+    font-size: 26px;
+    font-weight: bold;
+    color: white;
+}
+
+#currentPrizeRemain {
+    font-family: "HGS明朝B";
+    font-size: 20px;
+    font-weight: bold;
+    color: #FFD966;
+}
+
+/* -----------------------------
+   WinnerDisplay（当選者表示）
+------------------------------ */
+#winnerDisplay {
+    background-color: #10182C;
+    border: 2px solid #C9A227;
+    border-radius: 12px;
+}
+
+#winnerStatus,
+#winnerDepartment,
+#winnerName {
+    border: none;
+    background: transparent;
+}
+
+#winnerDepartment {
+    font-family: "HGS明朝B";
+    font-size: 18px;
+    color: #D9E2F2;
+}
+
+#winnerStatus {
+    font-family: "HGS明朝B";
+    font-size: 24px;
+    font-weight: bold;
+    color: #FFD966;
+}
+
+#winnerName {
+    font-family: "HGS明朝B";
+    font-size: 42px;
+    font-weight: bold;
+    color: white;
+}
+
+/* -----------------------------
+   Roulette（ルーレット）
+------------------------------ */
+#roulette {
+    background-color: #0B1533;
+    border: 2px solid #C9A227;
+    border-radius: 12px;
+}
+
+#rouletteCandidate,
+#rouletteCurrentCandidate {
+    background-color: #132347;
+    border: 1px solid #4C5B7A;
+    border-radius: 8px;
+}
+
+#rouletteCurrentCandidate {
+    background-color: #C9A227;
+    border: 2px solid #FFD966;
+}
+
+#rouletteName,
+#rouletteCurrentName,
+#rouletteDepartment,
+#rouletteCurrentDepartment {
+    border: none;
+    background: transparent;
+}
+
+#rouletteName {
+    font-family: "HGS明朝B";
+    font-size: 18px;
+    color: #D9E2F2;
+}
+
+#rouletteCurrentName {
+    font-family: "HGS明朝B";
+    font-size: 26px;
+    font-weight: bold;
+    color: #132347;
+}
+
+#rouletteDepartment {
+    font-size: 12px;
+    color: #AAB8D0;
+}
+
+#rouletteCurrentDepartment {
+    font-size: 14px;
+    color: #132347;
+}
+
+/* -----------------------------
+   抽選操作ボタン
+------------------------------ */
+#drawButton,
+#nextPrizeButton {
+    font-family: "HGS明朝B";
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 10px 32px;
+}
+
+#drawButton {
+    color: #132347;
+    background-color: #FFD966;
+    border: 2px solid #C9A227;
+}
+
+#drawButton:hover {
+    background-color: #FFE69A;
+}
+
+#nextPrizeButton {
+    color: white;
+    background-color: #132347;
+    border: 1px solid #C9A227;
+}
+
+#nextPrizeButton:hover {
+    background-color: #1A2B52;
+}
+
+#nextPrizeButton:disabled {
+    color: #8290AA;
+    border-color: #4C5B7A;
+}
+
+/* -----------------------------
+   HistoryList（当選履歴）
+------------------------------ */
+#historyList {
+    background-color: #10182C;
+    border: 1px solid #4C5B7A;
+    border-radius: 8px;
+}
+
+#historyCard {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #34415F;
+    min-height: 62px;
+}
+
+#historyPrize,
+#historyWinner,
+#historyTime {
+    border: none;
+    background: transparent;
+}
+
+#historyPrize {
+    font-family: "HGS明朝B";
+    font-size: 15px;
+    font-weight: bold;
+    color: #FFD966;
+}
+
+#historyWinner {
+    font-family: "HGS明朝B";
+    font-size: 18px;
+    color: white;
+}
+
+#historyTime {
+    font-size: 13px;
+    color: #AAB8D0;
+}
+
+/* -----------------------------
    ParticipantCount（参加人数）
 ------------------------------ */
 #participantCount {
