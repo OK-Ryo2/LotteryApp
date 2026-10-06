@@ -11,7 +11,16 @@ def main():
     qss_path = Path(__file__).parent / "styles" / "theme.qss"
 
     with open(qss_path, "r", encoding="utf-8") as f:
-        app.setStyleSheet(f.read())
+        stylesheet = f.read()
+
+    texture_path = (
+        Path(__file__).resolve().parents[1]
+        / "assets"
+        / "images"
+        / "backgrounds"
+        / "background_texture.png"
+    ).as_posix()
+    app.setStyleSheet(stylesheet.replace("{{BACKGROUND_TEXTURE}}", texture_path))
 
     window = OperatorWindow()
     window.show()

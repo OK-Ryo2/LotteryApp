@@ -1,11 +1,12 @@
 QMainWindow {
-    background-color: #0B1533;
+    background-color: #071126;
 }
 #centralWidget {
-    background-color: #000000;
+    /* BackgroundWidget が画面サイズに合わせてテクスチャを描画する。 */
+    background-color: transparent;
 }
 QLabel {
-    color: white;
+    color: #F8F3E8;
     font-size: 18px;
 }
 
@@ -25,8 +26,8 @@ QLabel {
 #leftPanel,
 #centerPanel,
 #rightPanel {
-    background-color: #132347;
-    border: 2px solid #C9A227;
+    background-color: #162438;
+    border: 2px solid #D4B13F;
     border-radius: 12px;
 }
 
@@ -34,6 +35,7 @@ QLabel {
     font-family: "HGS明朝B";
     font-size: 22px;
     font-weight: bold;
+    color: #F6D77A;
 }
 
 /* -----------------------------
@@ -41,23 +43,46 @@ QLabel {
 ------------------------------ */
 
 #prizeCard {
-    background-color: #1A2B52;
-    border: 2px solid #C9A227;
+    background-color: #162438;
+    border: 1px solid #162438;
     border-radius: 10px;
+    padding: 10px 8px;
+    min-height: 104px;
 }
 
-#rankLabel {
+#prizeCardActive {
+    background-color: #162438;
+    border: 2px solid #E0BD4F;
+    border-radius: 10px;
+    min-height: 104px;
+}
+
+#rankNumber,
+#rankSuffix {
     border: none;
     background: transparent;
     font-family: "HGS明朝B";
-    font-size: 16px;
     font-weight: bold;
+}
+
+#rankNumber {
+    font-size: 26px;
+}
+
+#rankSuffix {
+    font-size: 13px;
+}
+
+#prizeImage {
+    border: none;
+    background: transparent;
 }
 
 #prizeLabel {
     border: none;
     background: transparent;
     font-size: 12px;
+    color: #F4F0E5;
 }
 
 #remainLabel {
@@ -76,18 +101,52 @@ QLabel {
     font-size: 12px;
 }
 
+#statusLabelCompleted {
+    border: none;
+    border-radius: 4px;
+    background-color: #D2A727;
+    color: #1A2B52;
+    font-family: "HGS明朝B";
+    font-size: 12px;
+    font-weight: bold;
+    padding: 6px 16px;
+}
+
+#prizeScroll {
+    border: none;
+    background: transparent;
+    padding: 8px;
+}
+
+#prizeListContent {
+    background: rgba(23, 44, 83, 180);
+}
+
+#prizeScroll QScrollBar:vertical {
+    width: 10px;
+    background: #0D1A35;
+}
+
+#prizeScroll QScrollBar::handle:vertical {
+    background-color: #D4B13F;
+    border-radius: 5px;
+    min-height: 30px;
+}
+
 /* -----------------------------
    CurrentPrize（現在抽選中の賞品）
 ------------------------------ */
 #currentPrize {
-    background-color: #1A2B52;
-    border: 2px solid #FFD966;
-    border-radius: 12px;
+    background: transparent;
+    border: none;
+    min-height: 114px;
+    padding: 0 18px 4px 18px;
 }
 
-#currentPrizeWing,
-#currentPrizeTitle,
-#currentPrizeRank,
+#currentPrizeGoldWing,
+#currentPrizeRibbon,
+#currentPrizeRankNumber,
+#currentPrizeRankSuffix,
 #currentPrizeName,
 #currentPrizeRemain {
     border: none;
@@ -99,22 +158,29 @@ QLabel {
     font-size: 22px;
     font-weight: bold;
     color: #1A2B52;
-    background-color: #FFD966;
-    border: 1px solid #C9A227;
-    border-radius: 5px;
-    padding: 0 10px;
+    background: transparent;
+    border: none;
+    padding: 3;
 }
 
-#currentPrizeRank {
+#currentPrizeRankNumber,
+#currentPrizeRankSuffix {
     font-family: "HGS明朝B";
-    font-size: 20px;
     font-weight: bold;
     color: #FFD966;
 }
 
+#currentPrizeRankNumber {
+    font-size: 30px;
+}
+
+#currentPrizeRankSuffix {
+    font-size: 14px;
+}
+
 #currentPrizeName {
     font-family: "HGS明朝B";
-    font-size: 26px;
+    font-size: 22px;
     font-weight: bold;
     color: white;
 }
@@ -127,60 +193,25 @@ QLabel {
 }
 
 /* -----------------------------
-   WinnerDisplay（当選者表示）
------------------------------- */
-#winnerDisplay {
-    background-color: #10182C;
-    border: 2px solid #C9A227;
-    border-radius: 12px;
-}
-
-#winnerStatus,
-#winnerDepartment,
-#winnerName {
-    border: none;
-    background: transparent;
-}
-
-#winnerDepartment {
-    font-family: "HGS明朝B";
-    font-size: 18px;
-    color: #D9E2F2;
-}
-
-#winnerStatus {
-    font-family: "HGS明朝B";
-    font-size: 24px;
-    font-weight: bold;
-    color: #FFD966;
-}
-
-#winnerName {
-    font-family: "HGS明朝B";
-    font-size: 42px;
-    font-weight: bold;
-    color: white;
-}
-
-/* -----------------------------
    Roulette（ルーレット）
 ------------------------------ */
 #roulette {
     background-color: #0B1533;
-    border: 2px solid #C9A227;
+    border: 2px solid #D4B13F;
     border-radius: 12px;
+    min-height: 186px;
 }
 
 #rouletteCandidate,
 #rouletteCurrentCandidate {
-    background-color: #132347;
-    border: 1px solid #4C5B7A;
+    background-color: #1E3765;
+    border: 1px solid #59729C;
     border-radius: 8px;
 }
 
 #rouletteCurrentCandidate {
-    background-color: #C9A227;
-    border: 2px solid #FFD966;
+    background-color: #C4931C;
+    border: 2px solid #FFE99A;
 }
 
 #rouletteName,
@@ -201,7 +232,7 @@ QLabel {
     font-family: "HGS明朝B";
     font-size: 26px;
     font-weight: bold;
-    color: #132347;
+    color: #17284A;
 }
 
 #rouletteDepartment {
@@ -211,7 +242,7 @@ QLabel {
 
 #rouletteCurrentDepartment {
     font-size: 14px;
-    color: #132347;
+    color: #24375C;
 }
 
 /* -----------------------------
@@ -228,46 +259,242 @@ QLabel {
 
 #drawButton {
     color: #132347;
-    background-color: #FFD966;
-    border: 2px solid #C9A227;
+    background-color: #F6D463;
+    border: 2px solid #B98C18;
+}
+
+#drawStatus {
+    background-color: #0B1830;
+    border: 1px solid #B98C18;
+    border-radius: 10px;
+    min-height: 50px;
+    padding: 10px 16px;
+}
+
+#drawStatusLabel {
+    color: #FFD966;
+    background: transparent;
+    border: none;
+    font-family: "HGS明朝B";
+    font-size: 23px;
+    font-weight: bold;
 }
 
 #drawButton:hover {
-    background-color: #FFE69A;
+    background-color: #FFE58B;
+}
+
+#drawButton:disabled {
+    color: #8D99AD;
+    background-color: #293750;
+    border-color: #52627B;
 }
 
 #nextPrizeButton {
     color: white;
-    background-color: #132347;
-    border: 1px solid #C9A227;
+    background-color: #1A2B52;
+    border: 1px solid #D3AE3B;
 }
 
 #nextPrizeButton:hover {
-    background-color: #1A2B52;
+    background-color: #284574;
 }
 
 #nextPrizeButton:disabled {
-    color: #8290AA;
-    border-color: #4C5B7A;
+    color: #96A3B9;
+    background: #293750;
+    border-color: #52627B;
+}
+
+/* -----------------------------
+   Footer controls
+------------------------------ */
+#footerBar {
+    /* 背景テクスチャをそのまま見せるため、フッター自身は透明・枠なしにする。 */
+    background: transparent;
+    border: none;
+}
+
+#volumeButton,
+#settingsButton {
+    color: #FFF9E9;
+    background-color: #1A2B52;
+    border: 1px solid #D3AE3B;
+    border-radius: 6px;
+    font-family: "HGS明朝B";
+    font-size: 15px;
+    font-weight: bold;
+    padding: 4px 12px;
+}
+
+#volumeButton:hover,
+#settingsButton:hover {
+    background-color: #284574;
+}
+
+#footerMessage {
+    color: #F6D77A;
+    font-family: "HGS明朝B";
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#winnerDialog,
+#settingsDialog {
+    background-color: #071126;
+    border: 2px solid #D4B13F;
+    border-radius: 12px;
+    padding: 28px 32px 24px 32px;
+}
+
+#winnerDialogConfetti {
+    background: transparent;
+    border: none;
+}
+
+#winnerDialogContent {
+    background: transparent;
+    border: none;
+}
+
+#winnerDialogStatus {
+    color: #FFFFFF;
+    font-family: "HGS明朝B";
+    font-size: 52px;
+    font-weight: bold;
+}
+
+#winnerDialogDepartment,
+#settingsDialogMessage {
+    color: #D9E2F2;
+    font-family: "HGS明朝B";
+    font-size: 36px;
+}
+
+#winnerDialogName {
+    color: #FFF9E9;
+    font-family: "HGS明朝B";
+    font-size: 72px;
+    font-weight: bold;
+}
+
+#winnerDialogClose,
+#settingsDialogReload,
+#settingsDialogClose,
+#settingsDialogST {
+    color: #17284A;
+    background-color: #F6D463;
+    border: 1px solid #B98C18;
+    border-radius: 6px;
+    font-family: "HGS明朝B";
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 20px;
+}
+
+#prizeRevealDialog {
+    background-color: #162438;
+    border: 2px solid #D4B13F;
+    border-radius: 14px;
+    padding: 10px 34px 14px 34px;
+}
+
+#prizeRevealTitle,
+#prizeRevealRank,
+#prizeRevealName,
+#prizeRevealDescription,
+#prizeRevealRibbon {
+    background: transparent;
+    border: none;
+}
+
+#prizeRevealTitle {
+    color: #FFD966;
+    font-family: "HGS明朝B";
+    font-size: 28px;
+    min-height: 36px;
+    max-height: 36px;
+    font-weight: bold;
+}
+
+#prizeRevealRank {
+    color: #F6D77A;
+    font-family: "HGS明朝B";
+    font-size: 34px;
+    min-height: 44px;
+    max-height: 44px;
+    font-weight: bold;
+}
+
+#prizeRevealName {
+    color: #FFF9E9;
+    font-family: "HGS明朝B";
+    font-size: 27px;
+    min-height: 42px;
+    max-height: 42px;
+    font-weight: bold;
+}
+
+#prizeRevealImage {
+    background: transparent;
+    border: none;
+    color: #D9E2F2;
+}
+
+#prizeRevealDescription {
+    color: #D9E2F2;
+    font-size: 16px;
+    min-height: 34px;
+    max-height: 34px;
+}
+
+#prizeRevealStartButton,
+#prizeRevealCancelButton {
+    font-family: "HGS明朝B";
+    font-size: 17px;
+    font-weight: bold;
+    border-radius: 6px;
+    padding: 7px 22px;
+}
+
+#prizeRevealStartButton {
+    color: #17284A;
+    background-color: #F6D463;
+    border: 1px solid #B98C18;
+}
+
+#prizeRevealCancelButton {
+    color: #FFF9E9;
+    background: #284574;
+    border: 1px solid #D3AE3B;
 }
 
 /* -----------------------------
    HistoryList（当選履歴）
 ------------------------------ */
 #historyList {
-    background-color: #10182C;
-    border: 1px solid #4C5B7A;
+    background-color: #162438;
+    border: 1px solid #60739A;
     border-radius: 8px;
+    padding: 8px;
+}
+
+#historyScroll {
+    background: transparent;
+    border: none;
 }
 
 #historyCard {
-    background-color: transparent;
+    background-color: #162438;
     border: none;
-    border-bottom: 1px solid #34415F;
-    min-height: 62px;
+    border-bottom: 1px solid #40547A;
+    min-height: 74px;
+    max-height: 74px;
+    padding: 8px 12px;
 }
 
 #historyPrize,
+#historyDepartment,
 #historyWinner,
 #historyTime {
     border: none;
@@ -283,8 +510,14 @@ QLabel {
 
 #historyWinner {
     font-family: "HGS明朝B";
-    font-size: 18px;
-    color: white;
+    font-size: 22px;
+    color: #FFF9E9;
+}
+
+#historyDepartment {
+    font-family: "HGS明朝B";
+    font-size: 14px;
+    color: #AAB8D0;
 }
 
 #historyTime {
@@ -296,25 +529,28 @@ QLabel {
    ParticipantCount（参加人数）
 ------------------------------ */
 #participantCount {
-    background-color: #1A2B52;
-    border: 2px solid #C9A227;
+    background-color: #27334a;
+    border: 2px solid #D4B13F;
     border-radius: 10px;
+    min-width: 118px;
+    min-height: 60px;
+    padding: 5px 6px;
 }
 
 #participantTitle {
     border: none;
     background: transparent;
     font-family: "HGS明朝B";
-    font-size: 18px;
+    font-size: 17px;
     font-weight: bold;
-    color: white;
+    color: #FFF9E9;
 }
 
 #participantNumber {
     border: none;
     background: transparent;
     font-family: "HGS明朝B";
-    font-size: 22px;
+    font-size: 26px;
     font-weight: bold;
     color: #FFD966;
 }
@@ -323,6 +559,6 @@ QLabel {
     border: none;
     background: transparent;
     font-family: "HGS明朝B";
-    font-size: 18px;
+    font-size: 17px;
     color: white;
 }

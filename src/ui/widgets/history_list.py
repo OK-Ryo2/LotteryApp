@@ -2,30 +2,30 @@ from dataclasses import dataclass
 from datetime import datetime
 
 from PySide6.QtCore import Qt
-from PySide6.QtWidgets import QFrame, QLabel, QVBoxLayout
+from PySide6.QtWidgets import QFrame, QHBoxLayout, QLabel, QVBoxLayout
 
 
 @dataclass(frozen=True)
 class HistoryEntry:
     rank: str
     prize_name: str
+    department: str
     winner_name: str
     won_at: datetime
 
 
 class HistoryList(QFrame):
-    """直近6件の当選履歴を表示するWidget。"""
-
-    MAX_ENTRIES = 6
+    """当選履歴を新しい順に制限なく表示するWidget。"""
 
     def __init__(self):
         super().__init__()
 
         self.setObjectName("historyList")
         self.entries: list[HistoryEntry] = []
+        self._scale = 1.0
 
         self.layout = QVBoxLayout(self)
-        self.layout.setContentsMargins(8, 8, 8, 8)
+        self.layout.setContentsMargins(0, 0, 0, 0)
         self.layout.setSpacing(0)
         self.layout.setAlignment(Qt.AlignTop)
 
@@ -33,12 +33,25 @@ class HistoryList(QFrame):
         self,
         rank: str,
         prize_name: str,
+        department: str,
         winner_name: str,
         won_at: datetime,
     ):
-        """履歴を先頭へ追加し、7件目以降は破棄する。"""
-        self.entries.insert(0, HistoryEntry(rank, prize_name, winner_name, won_at))
-        del self.entries[self.MAX_ENTRIES :]
+        """最新の履歴を先頭へ追加する。"""
+        self.entries.insert(
+            0,
+            HistoryEntry(rank, prize_name, department, winner_name, won_at),
+        )
+        self._refresh()
+
+    def clear(self):
+        """表示中の当選履歴をすべて消去する。"""
+        self.entries.clear()
+        self._refresh()
+
+    def restore_entries(self, entries: list[HistoryEntry]):
+        """設定操作で保存済みの履歴表示へ戻す。"""
+        self.entries = list(entries)
         self._refresh()
 
     def _refresh(self):
@@ -51,13 +64,15 @@ class HistoryList(QFrame):
             self.layout.addWidget(self._create_card(entry))
         self.layout.addStretch()
 
-    @staticmethod
-    def _create_card(entry: HistoryEntry) -> QFrame:
+    def _create_card(self, entry: HistoryEntry) -> QFrame:
         card = QFrame()
         card.setObjectName("historyCard")
+        if self._scale != 1.0:
+            card.ensurePolished()
+            card.setFixedHeight(round(card.minimumHeight() * self._scale))
 
         layout = QVBoxLayout(card)
-        layout.setContentsMargins(12, 8, 12, 8)
+        layout.setContentsMargins(0, 0, 0, 0)
         layout.setSpacing(2)
 
         prize_label = QLabel(f"{entry.rank}　{entry.prize_name}")
@@ -66,10 +81,27 @@ class HistoryList(QFrame):
         winner_label = QLabel(f"{entry.winner_name} さん")
         winner_label.setObjectName("historyWinner")
 
+        winner_row = QHBoxLayout()
+        winner_row.setContentsMargins(0, 0, 0, 0)
+        winner_row.setSpacing(8)
+
+        department_label = QLabel(entry.department)
+        department_label.setObjectName("historyDepartment")
+        winner_row.addWidget(department_label)
+        winner_row.addWidget(winner_label)
+        winner_row.addStretch()
+
         time_label = QLabel(entry.won_at.strftime("%H:%M"))
         time_label.setObjectName("historyTime")
 
         layout.addWidget(prize_label)
-        layout.addWidget(winner_label)
+        layout.addLayout(winner_row)
         layout.addWidget(time_label)
         return card
+
+    def set_scale(self, scale: float):
+        """画面の表示倍率に合わせて履歴カードの高さを更新する。"""
+        if self._scale == scale:
+            return
+        self._scale = scale
+        self._refresh()

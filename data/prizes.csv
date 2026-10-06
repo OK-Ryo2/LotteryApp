@@ -1,0 +1,21 @@
+賞品ID,等級,賞品名(一覧表示),賞品名(中央表示),画像ファイルパス,個数,商品説明
+prize-01,1,部長賞 観劇ペアチケット,部長賞 歌劇団の観劇ペアチケット,assets/images/prizes/theatre_tickets.png,2,事業部長の推しもご出演！〇〇歌劇団の公演を是非生でご体験を！
+prize-02,2,副部長賞 Bluetoothスピーカー,副部長賞1 Bluetoothスピーカー Mini,assets/images/prizes/bluetooth_speaker.png,1,TSUJI部長より頂きました！軽くて持ち運びにも最適！
+prize-03,3,副部長賞 JTBギフト3000円分,副部長賞2 JTBギフトカード3000円分,assets/images/prizes/travel_gift_card.png,2,KUDO副部長より頂きました！旅行のお供に！
+prize-04,4,プロ用モニタリングイヤホン,プロ用モニタリングイヤホン(ブラック),assets/images/prizes/monitoring_earphones.png,1,妥協のないオーディオ体験が味わえる至高の一品！
+prize-05,5,ゲーミングマウス,PRO Xゲーミングマウス,assets/images/prizes/gaming_mouse.png,1,オンラインゲームにも最適！高級ゲーミングマウス！
+prize-06,6,紅ズワイガニ 1kg,紅ズワイガニ 1kg,assets/images/prizes/red_snow_crab.png,1,身入りのいいものを厳選！釜茹でズワイガニをプレゼント！
+prize-07,7,ディズニーペアチケット,ディズニーペアチケット,assets/images/prizes/theme_park_tickets.png,1,今や高級リゾート、至高のディズニー体験をあなたに！
+prize-08,8,松坂牛,松坂牛,assets/images/prizes/matsusaka_beef.png,1,最高級！肉の芸術品！切り落とし300gをあなたに！
+prize-09,9,選べるスイーツ,選べるスイーツ,assets/images/prizes/sweets_selection.png,1,子供から大人まで楽しめる厳選人気スイーツをお楽しみください！
+prize-10,10,Amazonギフト 2000円,Amazonギフトカード ミニ封筒 2000円,assets/images/prizes/amazongift.png,4,amazonでお好きな買い物をお楽しみください！Part2！
+prize-11,11,Amazonギフト 1000円,Amazonギフトカード ミニ封筒 1000円,assets/images/prizes/amazongift.png,7,amazonでお好きな買い物をお楽しみください！
+prize-12,12,電気ケトル,電気ケトル,assets/images/prizes/electric_kettle.png,1,簡単！便利！あっという間にお湯が沸く文明の利器！
+prize-13,13,北海道みそラーメン,北海道みそラーメン,assets/images/prizes/miso_ramen.png,1,寒い夜に極上の味、旨味の詰まった一杯を！
+prize-14,14,北海道産・ほたてソフト貝柱,北海道産・ほたてソフト貝柱,assets/images/prizes/scallop_adductor.png,1,香りと旨味をぐっと凝縮！
+prize-15,15,北海道産・無添加スルメ,北海道産・無添加スルメ,assets/images/prizes/dried_squid.png,1,噛めば噛むほど味が出る！お酒のお供、おやつにぴったり！
+prize-16,16,卓上タコ焼き機,卓上タコ焼き機,assets/images/prizes/takoyaki_maker.png,1,自宅で手軽に屋台の味！タコパにも最適！
+prize-17,17,ゆでたまごメーカー,ゆでたまごメーカー,assets/images/prizes/egg_cooker.png,1,半熟も固茹も簡単にできる！
+prize-18,18,ホットサンドメーカー,ホットサンドメーカー,assets/images/prizes/sandwich_press.png,1,アツアツ、カリカリ！挟んで焼けば何でもごちそうに！
+prize-19,19,王様のバスタオル,王様のバスタオル,assets/images/prizes/bath_towel.png,1,宮廷で使用されるタオルのような使い心地！
+prize-20,20,北海道だしふりかけ,北海道だしふりかけ,assets/images/prizes/furikake.png,2,ホカホカご飯のおともにぴったり！本格的なだしの旨味をお楽しみください！

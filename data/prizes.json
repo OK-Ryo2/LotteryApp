@@ -1,0 +1,182 @@
+[
+  {
+    "id": "prize-01",
+    "rank": 1,
+    "list_name": "部長賞 観劇ペアチケット",
+    "current_name": "部長賞 歌劇団の観劇ペアチケット",
+    "image_path": "assets/images/prizes/theatre_tickets.png",
+    "stock": 2,
+    "description": "事業部長の推しもご出演！〇〇歌劇団の公演を是非生でご体験を！"
+  },
+  {
+    "id": "prize-02",
+    "rank": 2,
+    "list_name": "副部長賞 Bluetoothスピーカー",
+    "current_name": "副部長賞1 Bluetoothスピーカー Mini",
+    "image_path": "assets/images/prizes/bluetooth_speaker.png",
+    "stock": 1,
+    "description": "TSUJI部長より頂きました！軽くて持ち運びにも最適！"
+  },
+  {
+    "id": "prize-03",
+    "rank": 3,
+    "list_name": "副部長賞 JTBギフト3000円分",
+    "current_name": "副部長賞2 JTBギフトカード3000円分",
+    "image_path": "assets/images/prizes/travel_gift_card.png",
+    "stock": 2,
+    "description": "KUDO副部長より頂きました！旅行のお供に！"
+  },
+  {
+    "id": "prize-04",
+    "rank": 4,
+    "list_name": "プロ用モニタリングイヤホン",
+    "current_name": "プロ用モニタリングイヤホン(ブラック)",
+    "image_path": "assets/images/prizes/monitoring_earphones.png",
+    "stock": 1,
+    "description": "妥協のないオーディオ体験が味わえる至高の一品！"
+  },
+  {
+    "id": "prize-05",
+    "rank": 5,
+    "list_name": "ゲーミングマウス",
+    "current_name": "PRO Xゲーミングマウス",
+    "image_path": "assets/images/prizes/gaming_mouse.png",
+    "stock": 1,
+    "description": "オンラインゲームにも最適！高級ゲーミングマウス！"
+  },
+  {
+    "id": "prize-06",
+    "rank": 6,
+    "list_name": "紅ズワイガニ 1kg",
+    "current_name": "紅ズワイガニ 1kg",
+    "image_path": "assets/images/prizes/red_snow_crab.png",
+    "stock": 1,
+    "description": "身入りのいいものを厳選！釜茹でズワイガニをプレゼント！"
+  },
+  {
+    "id": "prize-07",
+    "rank": 7,
+    "list_name": "ディズニーペアチケット",
+    "current_name": "ディズニーペアチケット",
+    "image_path": "assets/images/prizes/theme_park_tickets.png",
+    "stock": 1,
+    "description": "今や高級リゾート、至高のディズニー体験をあなたに！"
+  },
+  {
+    "id": "prize-08",
+    "rank": 8,
+    "list_name": "松坂牛",
+    "current_name": "松坂牛",
+    "image_path": "assets/images/prizes/matsusaka_beef.png",
+    "stock": 1,
+    "description": "最高級！肉の芸術品！切り落とし300gをあなたに！"
+  },
+  {
+    "id": "prize-09",
+    "rank": 9,
+    "list_name": "選べるスイーツ",
+    "current_name": "選べるスイーツ",
+    "image_path": "assets/images/prizes/sweets_selection.png",
+    "stock": 1,
+    "description": "子供から大人まで楽しめる厳選人気スイーツをお楽しみください！"
+  },
+  {
+    "id": "prize-10",
+    "rank": 10,
+    "list_name": "Amazonギフト 2000円",
+    "current_name": "Amazonギフトカード ミニ封筒 2000円",
+    "image_path": "assets/images/prizes/amazongift.png",
+    "stock": 4,
+    "description": "amazonでお好きな買い物をお楽しみください！Part2！"
+  },
+  {
+    "id": "prize-11",
+    "rank": 11,
+    "list_name": "Amazonギフト 1000円",
+    "current_name": "Amazonギフトカード ミニ封筒 1000円",
+    "image_path": "assets/images/prizes/amazongift.png",
+    "stock": 7,
+    "description": "amazonでお好きな買い物をお楽しみください！"
+  },
+  {
+    "id": "prize-12",
+    "rank": 12,
+    "list_name": "電気ケトル",
+    "current_name": "電気ケトル",
+    "image_path": "assets/images/prizes/electric_kettle.png",
+    "stock": 1,
+    "description": "簡単！便利！あっという間にお湯が沸く文明の利器！"
+  },
+  {
+    "id": "prize-13",
+    "rank": 13,
+    "list_name": "北海道みそラーメン",
+    "current_name": "北海道みそラーメン",
+    "image_path": "assets/images/prizes/miso_ramen.png",
+    "stock": 1,
+    "description": "寒い夜に極上の味、旨味の詰まった一杯を！"
+  },
+  {
+    "id": "prize-14",
+    "rank": 14,
+    "list_name": "北海道産・ほたてソフト貝柱",
+    "current_name": "北海道産・ほたてソフト貝柱",
+    "image_path": "assets/images/prizes/scallop_adductor.png",
+    "stock": 1,
+    "description": "香りと旨味をぐっと凝縮！"
+  },
+  {
+    "id": "prize-15",
+    "rank": 15,
+    "list_name": "北海道産・無添加スルメ",
+    "current_name": "北海道産・無添加スルメ",
+    "image_path": "assets/images/prizes/dried_squid.png",
+    "stock": 1,
+    "description": "噛めば噛むほど味が出る！お酒のお供、おやつにぴったり！"
+  },
+  {
+    "id": "prize-16",
+    "rank": 16,
+    "list_name": "卓上タコ焼き機",
+    "current_name": "卓上タコ焼き機",
+    "image_path": "assets/images/prizes/takoyaki_maker.png",
+    "stock": 1,
+    "description": "自宅で手軽に屋台の味！タコパにも最適！"
+  },
+  {
+    "id": "prize-17",
+    "rank": 17,
+    "list_name": "ゆでたまごメーカー",
+    "current_name": "ゆでたまごメーカー",
+    "image_path": "assets/images/prizes/egg_cooker.png",
+    "stock": 1,
+    "description": "半熟も固茹も簡単にできる！"
+  },
+  {
+    "id": "prize-18",
+    "rank": 18,
+    "list_name": "ホットサンドメーカー",
+    "current_name": "ホットサンドメーカー",
+    "image_path": "assets/images/prizes/sandwich_press.png",
+    "stock": 1,
+    "description": "アツアツ、カリカリ！挟んで焼けば何でもごちそうに！"
+  },
+  {
+    "id": "prize-19",
+    "rank": 19,
+    "list_name": "王様のバスタオル",
+    "current_name": "王様のバスタオル",
+    "image_path": "assets/images/prizes/bath_towel.png",
+    "stock": 1,
+    "description": "宮廷で使用されるタオルのような使い心地！"
+  },
+  {
+    "id": "prize-20",
+    "rank": 20,
+    "list_name": "北海道だしふりかけ",
+    "current_name": "北海道だしふりかけ",
+    "image_path": "assets/images/prizes/furikake.png",
+    "stock": 2,
+    "description": "ホカホカご飯のおともにぴったり！本格的なだしの旨味をお楽しみください！"
+  }
+]
